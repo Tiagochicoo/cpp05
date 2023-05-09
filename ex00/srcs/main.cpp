@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 10:45:29 by tpereira          #+#    #+#             */
-/*   Updated: 2023/04/23 10:46:32 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/05/09 19:48:05 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 int main()
 {
-	Bureaucrat a(5);
-
+	// Bureaucrat a("Tom", 5);
 	try
 	{
-		while (1)
-			a.incrementGrade();
+		Bureaucrat a("Tom", 500);
+		// while (1)
+		// 	a.decrementGrade();
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
-	}	
+	}
+	// std::cout << a.getGrade() << std::endl;
 
 	return 0;
 }

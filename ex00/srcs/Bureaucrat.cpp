@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 09:47:03 by tpereira          #+#    #+#             */
-/*   Updated: 2023/04/23 10:47:23 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/05/09 19:38:56 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,25 @@ void Bureaucrat::incrementGrade()
 void Bureaucrat::decrementGrade()
 {
 	_grade++;
-	else if (_grade > 150)
+	if (_grade > 150)
 		throw(Bureaucrat::GradeTooLowException());
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "Grade is too high!";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "Grade is too low!";
 }
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-std::string Bureaucrat::getName() const
+std::string const Bureaucrat::getName() const
 {
 	return _name;
 }

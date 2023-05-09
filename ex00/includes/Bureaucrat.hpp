@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 09:46:57 by tpereira          #+#    #+#             */
-/*   Updated: 2023/04/23 11:05:22 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/05/09 19:38:36 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ class Bureaucrat
 
 		Bureaucrat &		operator=( Bureaucrat const & rhs );
 
-		class Bureaucrat GradeTooHighException : public std::exception
+		class GradeTooHighException : public std::exception
 		{
 			public:
-				virtual const char* tooHigh
-			
+				virtual const char *what() const throw();
 		};
-		class Bureaucrat GradeTooLowException : public std::exception
+		class GradeTooLowException : public std::exception
 		{
-
+			public:
+				virtual const char *what() const throw();
 		};
 
 		void	incrementGrade();
