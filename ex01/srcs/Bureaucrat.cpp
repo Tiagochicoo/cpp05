@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 09:47:03 by tpereira          #+#    #+#             */
-/*   Updated: 2023/05/09 19:54:38 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/05/10 19:40:12 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,14 @@ void Bureaucrat::decrementGrade()
 	_grade++;
 	if (_grade > 150)
 		throw(Bureaucrat::GradeTooLowException());
+}
+
+void Bureaucrat::signForm(std::string formName)
+{
+	if (_grade  && _grade >= 1)
+		std::cout << this->getName() << " signed " << formName << std::endl;
+	else
+		std::cout << this->getName() << " couldn't sign " << formName << " because " << this->getName() << "'s grade is too low" << std::endl;
 }
 
 /*

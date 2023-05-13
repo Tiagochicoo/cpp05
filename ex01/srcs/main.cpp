@@ -6,18 +6,26 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 10:45:29 by tpereira          #+#    #+#             */
-/*   Updated: 2023/05/09 19:48:05 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/05/13 11:05:20 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
-	// Bureaucrat a("Tom", 5);
+	Form b("Form1", 5, 5);
+	Bureaucrat a("Tom", 5);
+	b.beSigned(a);
+	a.signForm("Form2");
+	std::cout << b << std::endl;
+	std::cout << b.getMinExecGrade() << std::endl;
 	try
 	{
-		Bureaucrat a("Tom", 500);
+		Bureaucrat a("Tom", 4);
+		Form b("Form1", 5, 5);
+		b.beSigned(a);
 		// while (1)
 		// 	a.decrementGrade();
 	}
