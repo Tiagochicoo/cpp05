@@ -25,6 +25,9 @@ class AForm
 		unsigned int const	_minSignGrade;
 		unsigned int const	_minExecGrade;
 
+	protected:
+		virtual void formFunction() const = 0;
+
 	public:
 
 		AForm();
