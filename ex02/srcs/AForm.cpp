@@ -38,8 +38,6 @@ AForm::AForm( const AForm & src ) : _name(src.getName()), _minSignGrade(src.getM
 	std::cout << this->getName() << " AForm Copy constructor called!" << std::endl;
 }
 
-
-
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
@@ -71,11 +69,24 @@ std::ostream &			operator<<( std::ostream & o, AForm const & i )
 	return o;
 }
 
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
+void	AForm::execute(Bureaucrat const & executor) const
+{
+	if (this->getSigned())
+	{
+		if (executor.getGrade() < this->getMinExecGrade())
+		{
+			this->formFunction();
+		}
+		else
+			throw AForm::GradeTooLowException();
+	}
+	else
+		throw AForm::FormNotSignedException();
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
@@ -108,6 +119,5 @@ void AForm::beSigned(Bureaucrat &bureaucrat)
 	_signed = true;
 	std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;
 }
-
 
 /* ************************************************************************** */

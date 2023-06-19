@@ -2,6 +2,7 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 # include <iostream>
+# include <string>
 # include "AForm.hpp"
 # include <cstdlib>
 

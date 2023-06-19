@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 09:47:03 by tpereira          #+#    #+#             */
-/*   Updated: 2023/05/10 19:40:12 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/06/19 22:07:41 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,11 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 	std::cout << this->getName() << " Bureaucrat Full constructor called!" << std::endl;
 }
 
-
 Bureaucrat::Bureaucrat( const Bureaucrat & src )
 {
 	*this = src;
 	std::cout << this->getName() << " Bureaucrat Copy constructor called!" << std::endl;
 }
-
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -57,7 +55,6 @@ Bureaucrat::~Bureaucrat()
 {
 	std::cout << this->getName() << " Bureaucrat Destructor called!" << std::endl;
 }
-
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
@@ -77,11 +74,9 @@ std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i )
 	return o;
 }
 
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
-
 
 void Bureaucrat::incrementGrade()
 {
@@ -89,7 +84,6 @@ void Bureaucrat::incrementGrade()
 	if (_grade < 1)
 		throw(Bureaucrat::GradeTooHighException());
 }
-
 
 void Bureaucrat::decrementGrade()
 {
@@ -104,6 +98,19 @@ void Bureaucrat::signForm(std::string formName)
 		std::cout << this->getName() << " signed " << formName << std::endl;
 	else
 		std::cout << this->getName() << " couldn't sign " << formName << " because " << this->getName() << "'s grade is too low" << std::endl;
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->_name << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& error)
+	{
+		std::cout << this->_name << " failed to execute " << form.getName() << " because " << error.what() << std::endl;
+	}
 }
 
 /*

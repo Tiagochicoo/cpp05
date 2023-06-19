@@ -15,8 +15,8 @@
 
 # include <iostream>
 # include <string>
-# include "Bureaucrat.hpp"
 
+class Bureaucrat;
 class AForm
 {
 	private:
@@ -54,13 +54,25 @@ class AForm
 				};
 		};
 
+		class FormNotSignedException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return "Form is not signed!";
+				}
+		};
+
 		std::string	const	getName() const;
 		bool				getSigned() const;
 		unsigned int		getMinSignGrade() const;
 		unsigned int		getMinExecGrade() const;
 		void				beSigned(Bureaucrat &bureaucrat);
+
+		void 				execute(Bureaucrat const &executor) const;
 };
 
+#include "Bureaucrat.hpp"
 std::ostream &			operator<<( std::ostream & o, AForm const & i );
 
 #endif /* ************************************************************ AFORM_H */

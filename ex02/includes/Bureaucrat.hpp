@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 09:46:57 by tpereira          #+#    #+#             */
-/*   Updated: 2023/05/10 19:39:18 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/06/19 22:10:19 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include "AForm.hpp"
 
 class Bureaucrat
 {
@@ -55,9 +56,9 @@ class Bureaucrat
 		std::string	const	getName() const;
 		unsigned int		getGrade() const;
 		void				signForm(std::string formName);
+
+		void				executeForm(AForm const &form);
 };
-
-
 
 std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i );
 
