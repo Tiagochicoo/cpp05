@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:29:00 by tpereira          #+#    #+#             */
-/*   Updated: 2023/06/19 22:19:10 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/06/19 22:26:02 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,11 @@ std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i )
 
 void	RobotomyRequestForm::formFunction() const
 {
+	srand(time(NULL));
+	int randomNumber = rand() % 100;
+
 	std::cout << "rrrrrrrrrrrrr, rrrrrrr tick a tick a tick a tick a rrrrrr" << std::endl;
-	if ((rand() % 2) == 1)
+	if (randomNumber < 50)
 		std::cout << _target << " robotomized successfully!" << std::endl;
 	else
 		std::cout << "Sorry, robotomy has failed!" << std::endl;
