@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:58:49 by tpereira          #+#    #+#             */
-/*   Updated: 2023/06/21 19:30:26 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:38:49 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,41 +54,52 @@ std::ostream &			operator<<( std::ostream & o, Intern const & i )
 	return o;
 }
 
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-AForm *Intern::makeForm(std::string name, std::string target)
+AForm * Intern::makeForm(std::string const & name, std::string const & target)
 {
-	std::string availableForms[3];
 	int			i = 0;
+	AForm * (*formsArray[3])(std::string const &) =
+	{
+		&Intern::_createPresidentialPardonForm,
+		&Intern::_createRobotomyRequestForm,
+		&Intern::_createShrubberyCreationForm
+	};
 
-	availableForms[0] = "shrubbery creation";
-	availableForms[1] = "presidential pardon";
-	availableForms[2] = "robotomy request";
+	std::string const availableForms[3] = 
+	{
+		"shrubbery creation",
+		"presidential pardon",
+		"robotomy request"
+	};
 
 	for (i = 0; i < 3; i++)
 	{
-		if (name.compare(availableForms[i]))
-			break;
+		if (availableForms[i] == name)
+		{
+			std::cout << "Intern created " << name << "!" << std::endl;
+			return (formsArray[i](target));
+		}
 	}
+	std::cout << "Sorry! Can't create " << name << "!" << std::endl;
+	return (NULL);
+}
 
-	switch (i)
-	{
-		case 0:
-			std::cout << "Intern Created a ShrubberryCreationForm!" << std::endl;
-			return (new ShrubberyCreationForm(target));
-		case 1:
-			std::cout << "Intern Created a PresidentialPardonForm!" << std::endl;
-			return (new PresidentialPardonForm(target));
-		case 2:
-			std::cout << "Intern Created a RobotomyRequestForm!" << std::endl;
-			return (new RobotomyRequestForm(target));
-		default:
-			std::cout << "Sorry! No form available with that name!" << std::endl;
-			return NULL;
-	}
+AForm * Intern::_createPresidentialPardonForm(std::string const & target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
+AForm * Intern::_createRobotomyRequestForm(std::string const & target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+AForm * Intern::_createShrubberyCreationForm(std::string const & target)
+{
+	return (new ShrubberyCreationForm(target));
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:58:52 by tpereira          #+#    #+#             */
-/*   Updated: 2023/06/21 19:29:36 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:23:24 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,19 @@
 
 class Intern
 {
-	public:
+	private:
+		static AForm * _createPresidentialPardonForm(std::string const & target);
+		static AForm * _createRobotomyRequestForm(std::string const & target);
+		static AForm * _createShrubberyCreationForm(std::string const & target);
 
+	public:
 		Intern();
 		Intern( Intern const & src );
 		~Intern();
 
 		Intern &		operator=( Intern const & rhs );
 
-		AForm *makeForm(std::string name, std::string target);
+		AForm * makeForm(std::string const & name, std::string const & target);
 };
 
 std::ostream &			operator<<( std::ostream & o, Intern const & i );
