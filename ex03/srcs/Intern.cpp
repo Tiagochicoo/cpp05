@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:58:49 by tpereira          #+#    #+#             */
-/*   Updated: 2023/06/23 20:38:49 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:58:16 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ AForm * Intern::makeForm(std::string const & name, std::string const & target)
 	{
 		if (availableForms[i] == name)
 		{
-			std::cout << "Intern created " << name << "!" << std::endl;
+			std::cout << "\e[0;32m" << "Intern created " << name << "!\e[0m" << std::endl;
 			return (formsArray[i](target));
 		}
 	}
-	std::cout << "Sorry! Can't create " << name << "!" << std::endl;
+	std::cout << "\e[0;31m" <<"Sorry! Can't create '" << name << "'!\e[0m" << std::endl;
 	return (NULL);
 }
 
