@@ -6,7 +6,7 @@
 /*   By: tpereira <tpereira@42Lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:58:49 by tpereira          #+#    #+#             */
-/*   Updated: 2023/06/23 20:58:16 by tpereira         ###   ########.fr       */
+/*   Updated: 2023/07/10 23:51:32 by tpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ Intern &				Intern::operator=( Intern const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, Intern const & i )
 {
-	o << "Value = " << i;
+	(void)i;
+	o << "Intern Object";
 	return o;
 }
 
