@@ -12,7 +12,7 @@
 
 PROG		= bureaucrat
 CXX			= g++
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -pedantic -g -fsanitize=address
 SRCS		= ./srcs/*.cpp
 INC			= ./includes
 
